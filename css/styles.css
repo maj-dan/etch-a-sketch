@@ -1,17 +1,21 @@
 .pixel {
-    width: 24px;
-    height: 24px;
+    flex: auto;
     background-color: aquamarine;
+    margin: 0;
+    border: 0;
 }
 
 #container {
     display: flex;
     flex-wrap: wrap;
+    width: 720px;
+    margin: auto;
 }
 
 .line {
     width: 100%;
     display: flex;
+    align-items: stretch;
 }
 
 .painted {

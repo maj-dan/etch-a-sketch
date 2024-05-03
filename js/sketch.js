@@ -16,6 +16,9 @@ function createGrid(parent, size) {
 
         parent.appendChild(lineElement);
     }
+
+    const lines = document.querySelectorAll(".line");
+    lines.forEach(setHeight);
 }
 
 function changeElementBGColor(event) {
@@ -23,4 +26,9 @@ function changeElementBGColor(event) {
     if (event.target.classList.contains("pixel")){
         event.target.classList.add("painted");
     }
+}
+
+function setHeight(element) {
+    const pixelWidth = document.querySelector(".pixel").offsetWidth;
+    element.style.height = `${pixelWidth}px`;
 }
