@@ -2,6 +2,7 @@ const container = document.querySelector("#container");
 
 createGrid(container, 16);
 
+container.addEventListener("mouseover", changeElementBGColor);
 
 function createGrid(parent, size) {
     for (let line = 1; line <= size; line++) {
@@ -14,5 +15,12 @@ function createGrid(parent, size) {
         }
 
         parent.appendChild(lineElement);
+    }
+}
+
+function changeElementBGColor(event) {
+    console.log(event.target);
+    if (event.target.classList.contains("pixel")){
+        event.target.classList.add("painted");
     }
 }
