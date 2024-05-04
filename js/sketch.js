@@ -6,6 +6,7 @@ container.addEventListener("mouseover", changeElementBGColor);
 
 function createGrid() {
     const size = getValidNumber();
+    removeOldLines();
 
     for (let line = 1; line <= size; line++) {
         const lineElement = document.createElement("div");
@@ -19,8 +20,8 @@ function createGrid() {
         container.appendChild(lineElement);
     }
 
-    const lines = document.querySelectorAll(".line");
-    lines.forEach(setHeight);
+    const newlines = document.querySelectorAll(".line");
+    newlines.forEach(setHeight);
 }
 
 function changeElementBGColor(event) {
@@ -42,4 +43,11 @@ function getValidNumber() {
     } while (parseInt(number) < 2 || parseInt(number) > 100 || isNaN(parseInt(number)));
     
     return parseInt(number);
+}
+
+function removeOldLines() {
+    const oldLines =document.querySelectorAll(".line");
+    oldLines.forEach(element => {
+        element.remove();
+    });
 }
