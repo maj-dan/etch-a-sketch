@@ -6,6 +6,9 @@ container.addEventListener("mouseover", changeElementBGColor);
 
 function createGrid() {
     const resolution = getValidNumber();
+    //don't remove grid if cancel is pressed in prompt
+    if (resolution === null) return;
+
     removeOldLines();
 
     for (let line = 1; line <= resolution; line++) {
@@ -42,7 +45,9 @@ function getValidNumber() {
 
     do{
         number = prompt("Enter a number for the grid size, from 2 up to 100: ");
-    } while (parseInt(number) < 2 || parseInt(number) > 100 || isNaN(parseInt(number)));
+        if (number === null) return number;
+    } while (parseInt(number) < 2 || 
+    parseInt(number) > 100 || isNaN(parseInt(number)));
     
     return parseInt(number);
 }
