@@ -1,8 +1,12 @@
 const container = document.querySelector("#container");
 const generateGridBtn = document.querySelector("#generate");
+const rainbowBtn = document.querySelector("#rainbow");
+
+let mode = "default";
 
 generateGridBtn.addEventListener("click", createGrid);
 container.addEventListener("mouseover", changeElementBGColor);
+rainbowBtn.addEventListener("click", toggleRainbowMode);
 
 function createGrid() {
     const resolution = getValidNumber();
@@ -28,8 +32,10 @@ function createGrid() {
 }
 
 function changeElementBGColor(event) {
-    if (event.target.classList.contains("pixel")){
+    if (event.target.classList.contains("pixel") && mode === "rainbow"){
         event.target.style.backgroundColor = generateRandomRGBColor();
+    } else if (event.target.classList.contains("pixel")) {
+        event.target.style.backgroundColor = "rgb(0, 0, 0)";
     }
 }
 
@@ -45,6 +51,7 @@ function getValidNumber() {
 
     do{
         number = prompt("Enter a number for the grid size, from 2 up to 100: ");
+        //don't convert null to NaN and stop asking to enter number
         if (number === null) return number;
     } while (parseInt(number) < 2 || 
     parseInt(number) > 100 || isNaN(parseInt(number)));
@@ -64,4 +71,14 @@ function generateRandomRGBColor() {
     const rgbNumber2 = Math.floor(Math.random() * 256);
     const rgbNumber3 = Math.floor(Math.random() * 256);
     return `rgb(${rgbNumber1}, ${rgbNumber2}, ${rgbNumber3})`;
+}
+
+function toggleRainbowMode() {
+    if (mode === "default") {
+        rainbowBtn.textContent = "Rainbow mode: ON";
+        return mode = "rainbow";
+    } else {
+        rainbowBtn.textContent = "Rainbow mode: OFF";
+        return mode = "default";
+    }
 }
