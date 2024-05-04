@@ -26,7 +26,7 @@ function createGrid() {
 
 function changeElementBGColor(event) {
     if (event.target.classList.contains("pixel")){
-        event.target.classList.add("painted");
+        event.target.style.backgroundColor = generateRandomRGBColor();
     }
 }
 
@@ -52,4 +52,11 @@ function removeOldLines() {
     oldLines.forEach(element => {
         element.remove();
     });
+}
+
+function generateRandomRGBColor() {
+    const rgbNumber1 = Math.floor(Math.random() * 256);
+    const rgbNumber2 = Math.floor(Math.random() * 256);
+    const rgbNumber3 = Math.floor(Math.random() * 256);
+    return `rgb(${rgbNumber1}, ${rgbNumber2}, ${rgbNumber3})`;
 }
