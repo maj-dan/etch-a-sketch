@@ -5,13 +5,13 @@ generateGridBtn.addEventListener("click", createGrid);
 container.addEventListener("mouseover", changeElementBGColor);
 
 function createGrid() {
-    const size = getValidNumber();
+    const resolution = getValidNumber();
     removeOldLines();
 
-    for (let line = 1; line <= size; line++) {
+    for (let line = 1; line <= resolution; line++) {
         const lineElement = document.createElement("div");
         lineElement.classList.add("line");
-        for (let col = 1; col <= size; col++) {
+        for (let col = 1; col <= resolution; col++) {
             const pixel = document.createElement("div");
             pixel.classList.add("pixel");
             lineElement.appendChild(pixel);
@@ -31,6 +31,8 @@ function changeElementBGColor(event) {
 }
 
 function setHeight(element) {
+    //Used getBoundingClientRect to get floating point precision width
+    //making it always the same size, no matter the resolution of the grid
     const pixelWidth = document.querySelector(".pixel").getBoundingClientRect().width;
     element.style.height = `${pixelWidth}px`;
 }
