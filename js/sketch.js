@@ -31,7 +31,7 @@ function changeElementBGColor(event) {
 }
 
 function setHeight(element) {
-    const pixelWidth = document.querySelector(".pixel").offsetWidth;
+    const pixelWidth = document.querySelector(".pixel").getBoundingClientRect().width;
     element.style.height = `${pixelWidth}px`;
 }
 
