@@ -35,10 +35,16 @@ function createGrid() {
 }
 
 function changeElementBGColor(event) {
-    if (event.target.classList.contains("pixel") && rainbowOn){
-        event.target.style.backgroundColor = generateRandomRGBColor();
-    } else if (event.target.classList.contains("pixel")) {
-        event.target.style.backgroundColor = "rgb(0, 0, 0)";
+    const pixel = event.target;
+    if (pixel.classList.contains("pixel") && rainbowOn){
+        pixel.style.backgroundColor = generateRandomRGBColor();
+    } else if (pixel.classList.contains("pixel")) {
+        pixel.style.backgroundColor = "rgb(0, 0, 0)";
+    }
+    if (pixel.classList.contains("pixel") && gradientOn &&
+    (pixel.style.opacity === "" || parseFloat(pixel.style.opacity) < 1)){
+        pixel.style.opacity = pixel.style.opacity === "" ? "0" : pixel.style.opacity;
+        pixel.style.opacity = `${parseFloat(pixel.style.opacity) + 0.1}`;
     }
 }
 
