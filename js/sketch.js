@@ -1,12 +1,15 @@
 const container = document.querySelector("#container");
 const generateGridBtn = document.querySelector("#generate");
 const rainbowBtn = document.querySelector("#rainbow");
+const gradientBtn = document.querySelector("#gradient");
 
-let mode = "default";
+let rainbowOn = false;
+let gradientOn = false;
 
 generateGridBtn.addEventListener("click", createGrid);
 container.addEventListener("mouseover", changeElementBGColor);
 rainbowBtn.addEventListener("click", toggleRainbowMode);
+gradientBtn.addEventListener("click", toggleGradientMode);
 
 function createGrid() {
     const resolution = getValidNumber();
@@ -32,7 +35,7 @@ function createGrid() {
 }
 
 function changeElementBGColor(event) {
-    if (event.target.classList.contains("pixel") && mode === "rainbow"){
+    if (event.target.classList.contains("pixel") && rainbowOn){
         event.target.style.backgroundColor = generateRandomRGBColor();
     } else if (event.target.classList.contains("pixel")) {
         event.target.style.backgroundColor = "rgb(0, 0, 0)";
@@ -74,11 +77,21 @@ function generateRandomRGBColor() {
 }
 
 function toggleRainbowMode() {
-    if (mode === "default") {
-        rainbowBtn.textContent = "Rainbow mode: ON";
-        return mode = "rainbow";
-    } else {
+    if (rainbowOn) {
         rainbowBtn.textContent = "Rainbow mode: OFF";
-        return mode = "default";
+        return rainbowOn = false;
+    } else {
+        rainbowBtn.textContent = "Rainbow mode: ON";
+        return rainbowOn = true;
+    }
+}
+
+function toggleGradientMode() {
+    if (gradientOn) {
+        gradientBtn.textContent = "Gradient mode: OFF";
+        return gradientOn = false;
+    } else {
+        gradientBtn.textContent = "Gradient mode: ON";
+        return gradientOn = true;
     }
 }
