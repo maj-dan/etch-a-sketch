@@ -73,7 +73,19 @@ button:hover {
     width: 220px;
 }
 
+#spacer {
+    margin-right: 6px;
+}
+
 #manual {
+    font-size: 18px;
+    text-shadow: 0 0 4px;
+    margin-top: 200px;
+    margin-left: 6px;
+}
+
+#footer p {
+    text-align: center;
     font-size: 18px;
     text-shadow: 0 0 4px;
 }
