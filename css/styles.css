@@ -7,6 +7,8 @@
 
 body {
     background-color: black;
+    display: flex;
+    margin: 0;
 }
 
 #header {
@@ -61,5 +63,18 @@ button:hover {
     width: 100%;
     display: flex;
     align-items: stretch;
+}
+
+#main {
+    margin: auto;
+}
+
+#manual, #spacer {
+    width: 220px;
+}
+
+#manual {
+    font-size: 18px;
+    text-shadow: 0 0 4px;
 }
 
