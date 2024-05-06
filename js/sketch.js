@@ -45,6 +45,8 @@ function changeElementBGColor(event) {
     (pixel.style.opacity === "" || parseFloat(pixel.style.opacity) < 1)){
         pixel.style.opacity = pixel.style.opacity === "" ? "0" : pixel.style.opacity;
         pixel.style.opacity = `${parseFloat(pixel.style.opacity) + 0.1}`;
+    } else if (pixel.classList.contains("pixel")) {
+        pixel.style.opacity = "1";
     }
 }
 
